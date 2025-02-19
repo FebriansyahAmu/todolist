@@ -15,30 +15,30 @@
             <div class="col-md-6">
                 <div class="card shadow-lg">
                     <div class="card-header">
-                        <h4 class="card-title mb-0">Add New Task</h4>
+                        <h4 class="card-title mb-0">Tambah Tugas Baru</h4>
                     </div>
                     <div class="card-body">
                         <!-- Form Input Task -->
-                        <form action="#" method="POST">
+                        <form action="../action/actionTambahTugas.php" method="POST">
                             <div class="mb-3">
-                                <label for="taskName" class="form-label">Task Name</label>
-                                <input type="text" class="form-control" id="taskName" name="taskName" placeholder="Enter task name" required>
+                                <label for="namaTugas" class="form-label">Nama Tugas</label>
+                                <input type="text" class="form-control" id="namaTugas" name="namaTugas" placeholder="Silahkan isikan nama tugas" required>
                             </div>
                             <div class="mb-3">
-                                <label for="taskDescription" class="form-label">Description</label>
-                                <textarea class="form-control" id="taskDescription" name="taskDescription" rows="3" placeholder="Enter task description"></textarea>
+                                <label for="deskripsiTugas" class="form-label">Description</label>
+                                <textarea class="form-control" id="deskripsiTugas" name="deskripsiTugas" rows="3" placeholder="Silahkan isikan deskripsi tugas"></textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="taskDueDate" class="form-label">Due Date</label>
-                                <input type="date" class="form-control" id="taskDueDate" name="taskDueDate">
+                                <label for="tenggatWaktu" class="form-label">Tenggat Waktu</label>
+                                <input type="date" class="form-control" id="tenggatWaktu" name="tenggatWaktu">
                             </div>
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary btn-lg">Add Task</button>
+                                <button type="submit" class="btn btn-primary btn-lg">Tambah Tugas</button>
                             </div>
                         </form>
                     </div>
                     <div class="card-footer text-muted">
-                        <a href="index.html" class="btn btn-outline-secondary">Back to To-Do List</a>
+                        <a href="todolist.php" class="btn btn-outline-secondary">Kembali ke Beranda</a>
                     </div>
                 </div>
             </div>

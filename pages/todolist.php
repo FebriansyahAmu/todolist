@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+if(!$_SESSION['id_user']){
+    echo '<script>window.location.href="../index.php"</script>';
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +15,6 @@
     <title>To-Do List</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="bg-light">
     <!-- Navigasi Bar -->
@@ -17,10 +24,10 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" >
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/add_task.html">Tambah Tugas</a>
+                        <a class="nav-link" href="tambahTugas.php">Tambah Tugas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Logout</a>
@@ -66,10 +73,11 @@
                                     <td>Task 1</td>
                                     <td>Deskripsi tugas pertama</td>
                                     <td>2023-10-15</td>
-                                    <td><span class="badge bg-success">Completed</span></td>
+                                    <td><span class="badge bg-success">Selesai</span></td>
                                     <td>
                                         <button class="btn btn-sm btn-warning">Edit</button>
                                         <button class="btn btn-sm btn-danger">Hapus</button>
+                                        <button class="btn btn-sm btn-success">Selesai Tugas</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -81,6 +89,7 @@
                                     <td>
                                         <button class="btn btn-sm btn-warning">Edit</button>
                                         <button class="btn btn-sm btn-danger">Hapus</button>
+                                        <button class="btn btn-sm btn-success">Selesai Tugas</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -92,6 +101,7 @@
                                     <td>
                                         <button class="btn btn-sm btn-warning">Edit</button>
                                         <button class="btn btn-sm btn-danger">Hapus</button>
+                                        <button class="btn btn-sm btn-success">Selesai Tugas</button>
                                     </td>
                                 </tr>
                             </tbody>
