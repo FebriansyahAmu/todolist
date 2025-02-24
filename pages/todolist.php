@@ -41,7 +41,7 @@ if(!$_SESSION['id_user']){
     <div class="container mt-4">
         <div class="row">
             <div class="col">
-                <h2 class="text-primary">Selamat Datang, User!</h2>
+                <h2 class="text-primary">Selamat Datang, <?php echo $_SESSION['NamaLengkap'] ?></h2>
                 <p class="text-muted">Kelola tugas harian Anda dengan mudah.</p>
             </div>
         </div>
@@ -62,48 +62,41 @@ if(!$_SESSION['id_user']){
                                     <th scope="col">#</th>
                                     <th scope="col">Nama Tugas</th>
                                     <th scope="col">Deskripsi</th>
-                                    <th scope="col">Tanggal Jatuh Tempo</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Tanggal Jatuh Tempo</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Task 1</td>
-                                    <td>Deskripsi tugas pertama</td>
-                                    <td>2023-10-15</td>
-                                    <td><span class="badge bg-success">Selesai</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-warning">Edit</button>
-                                        <button class="btn btn-sm btn-danger">Hapus</button>
-                                        <button class="btn btn-sm btn-success">Selesai Tugas</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Task 2</td>
-                                    <td>Deskripsi tugas kedua</td>
-                                    <td>2023-10-20</td>
-                                    <td><span class="badge bg-warning">Pending</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-warning">Edit</button>
-                                        <button class="btn btn-sm btn-danger">Hapus</button>
-                                        <button class="btn btn-sm btn-success">Selesai Tugas</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Task 3</td>
-                                    <td>Deskripsi tugas ketiga</td>
-                                    <td>2023-10-25</td>
-                                    <td><span class="badge bg-warning">Pending</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-warning">Edit</button>
-                                        <button class="btn btn-sm btn-danger">Hapus</button>
-                                        <button class="btn btn-sm btn-success">Selesai Tugas</button>
-                                    </td>
-                                </tr>
+                               <?php
+                                     include("../action/config.php");
+                                    $idUser = $_SESSION['id_user'];
+                                    $query = "SELECT * FROM tbl_tugas WHERE id_user = ?";
+                                    $stmt = $connection->prepare($query);
+
+                                    $stmt->bind_param("i", $idUser);
+                                    $stmt->execute();
+                                    
+                                    $result = $stmt->get_result();
+                                    while($row = mysqli_fetch_assoc($result)){
+                                        echo '<tr>';
+                                        echo '<td>' . $row['idTugas'] . '</td>';
+                                        echo '<td>' . $row['namaTugas'] . '</td>';
+                                        echo '<td>' . $row['deskripsiTugas'] . '</td>';
+                                        echo '<td>' . $row['status'] . '</td>';
+                                        echo '<td>' . $row['tenggatWaktu'] . '</td>';
+                                        echo '
+                                            <td>
+                                                <div class="d-flex gap-2 align-items-center">
+                                                    <a href="../action/hapusTugas.php?id='. $row['idTugas'] .'" class="btn btn-sm btn-danger">Hapus</a>
+                                                    <a href="../action/editTugas.php?id='. $row['idTugas'] .'" class="btn btn-sm btn-warning">Edit</a>
+                                                    <a href="../action/selesaiTugas.php?id='. $row['idTugas'] .'" class="btn btn-sm btn-success">Selesai</a>
+                                                </div>
+                                            </td>
+                                        ';
+                                        echo '</tr>';
+                                    }
+                                ?>
                             </tbody>
                         </table>
                     </div>

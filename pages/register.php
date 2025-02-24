@@ -30,6 +30,11 @@
                     </div>
 
                     <div class="col-md-12 mb-3">
+                        <label for="alamat" class="form-label">Alamat</label>
+                        <input type="text" class="form-control" name="alamat" />
+                    </div>
+
+                    <div class="col-md-12 mb-3">
                         <label for="nohp" class="form-label">No Hp</label>
                         <input type="number" class="form-control" name="nohp" />
                     </div>
