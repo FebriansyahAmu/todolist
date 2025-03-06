@@ -83,13 +83,14 @@ if(!$_SESSION['id_user']){
                                         echo '<td>' . $row['idTugas'] . '</td>';
                                         echo '<td>' . $row['namaTugas'] . '</td>';
                                         echo '<td>' . $row['deskripsiTugas'] . '</td>';
-                                        echo '<td>' . $row['status'] . '</td>';
+                                        $badgeClass = ($row['status'] == 'Selesai') ? 'success' : 'warning';
+                                        echo '<td><span class="badge bg-' . $badgeClass . '">' . $row['status'] . '</span></td>';
                                         echo '<td>' . $row['tenggatWaktu'] . '</td>';
                                         echo '
                                             <td>
                                                 <div class="d-flex gap-2 align-items-center">
                                                     <a href="../action/hapusTugas.php?id='. $row['idTugas'] .'" class="btn btn-sm btn-danger">Hapus</a>
-                                                    <a href="../action/editTugas.php?id='. $row['idTugas'] .'" class="btn btn-sm btn-warning">Edit</a>
+                                                    <a href="editTugas.php?id='. $row['idTugas'] .'" class="btn btn-sm btn-warning">Edit</a>
                                                     <a href="../action/selesaiTugas.php?id='. $row['idTugas'] .'" class="btn btn-sm btn-success">Selesai</a>
                                                 </div>
                                             </td>
