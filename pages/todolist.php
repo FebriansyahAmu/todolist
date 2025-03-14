@@ -30,7 +30,7 @@ if(!$_SESSION['id_user']){
                         <a class="nav-link" href="tambahTugas.php">Tambah Tugas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="../action/actionLogout.php">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -83,7 +83,7 @@ if(!$_SESSION['id_user']){
                                         echo '<td>' . $row['idTugas'] . '</td>';
                                         echo '<td>' . $row['namaTugas'] . '</td>';
                                         echo '<td>' . $row['deskripsiTugas'] . '</td>';
-                                        $badgeClass = ($row['status'] == 'Selesai') ? 'success' : 'warning';
+                                        $badgeClass = ($row['status'] == 'selesai') ? 'success' : 'warning';
                                         echo '<td><span class="badge bg-' . $badgeClass . '">' . $row['status'] . '</span></td>';
                                         echo '<td>' . $row['tenggatWaktu'] . '</td>';
                                         echo '
@@ -108,7 +108,5 @@ if(!$_SESSION['id_user']){
 
     <!-- Bootstrap JS (Optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS (Optional) -->
-    <script src="assets/js/script.js"></script>
 </body>
 </html>

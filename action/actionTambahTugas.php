@@ -15,7 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("issss", $id_user, $namaTugas, $deskripsiTugas, $tenggatWaktu, $status);
     
     if ($stmt->execute()) {
-        header("Location: ../pages/tambahTugas.php");
+        echo "<script>alert('Tugas Berhasil Ditambahkan!')</script>";
+        echo "<script>window.location.href='../pages/todolist.php'</script>";
         exit;
     } else {
         echo "Terjadi kesalahan saat menambahkan like: " . $connection->error;

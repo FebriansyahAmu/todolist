@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 06, 2025 at 03:44 AM
+-- Host: localhost:3307
+-- Generation Time: Mar 14, 2025 at 05:48 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,7 +41,30 @@ CREATE TABLE `tbl_tugas` (
 --
 
 INSERT INTO `tbl_tugas` (`idTugas`, `id_user`, `namaTugas`, `deskripsiTugas`, `tenggatWaktu`, `status`) VALUES
-(3, 2, 'Kesalahan auth api', 'ada kesalahan pada api sehingga token tidak di generate', '2025-02-25', 'Selesai');
+(4, 1, 'Authentication Fitur', 'Membuat fitur Authentication menggunakan JWT Token dan store token di httpOnly cookies', '2025-03-14', 'selesai'),
+(8, 1, 'CRUD Pada Menu Kelas', 'Buat admin bisa menginputkan, delete, edit data pada bagian kelas', '2025-03-14', 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user`
+--
+
+CREATE TABLE `tbl_user` (
+  `id_user` int(11) NOT NULL,
+  `NamaLengkap` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `nohp` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_user`
+--
+
+INSERT INTO `tbl_user` (`id_user`, `NamaLengkap`, `email`, `password`, `alamat`, `nohp`) VALUES
+(1, 'Testing Akun', 'testing@gmail.com', 'qwerty', 'Motoboi Kecil', 98766453);
 
 --
 -- Indexes for dumped tables
@@ -55,6 +78,12 @@ ALTER TABLE `tbl_tugas`
   ADD KEY `id_user` (`id_user`);
 
 --
+-- Indexes for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  ADD PRIMARY KEY (`id_user`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -62,7 +91,13 @@ ALTER TABLE `tbl_tugas`
 -- AUTO_INCREMENT for table `tbl_tugas`
 --
 ALTER TABLE `tbl_tugas`
-  MODIFY `idTugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idTugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

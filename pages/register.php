@@ -10,8 +10,9 @@
 <body>
     <div class="container">
         <div class="reg-section">
-            <h4 align="center" class="mt-2">Register </h4>
+        <h4 align="center" class="mt-3">Register Akun Todo-List</h4>
             <div class="row-md-12 d-flex justify-content-center shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                
                 <form method="post" action="../action/actionregister.php">
                     
                     <div class="col-md-12 mt-5 mb-3">
@@ -42,7 +43,11 @@
                     <div class="d-flex justify-content-center mt-4">
                         <button type="submit" class="btn btn-primary">Daftar Akun</button>
                     </div>
+                    <div class="mt-2">
+                    <p>Sudah punya akun? <a href="../index.php">Login</a></p>
+                </div>
                 </form>
+               
             </div>
         </div>
     </div>

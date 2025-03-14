@@ -1,10 +1,18 @@
 <?php
 
 session_start();
+include "../action/config.php";
 if(!$_SESSION['id_user']){
     echo '<script>window.location.href="../index.php"</script>';
 }
 
+
+$idTugas = $_GET['id'];
+$userId = $_SESSION['id_user'];
+
+$query = "SELECT * FROM tbl_tugas WHERE idTugas = $idTugas AND id_user = $userId";
+$result = mysqli_query($connection, $query);
+$row = mysqli_fetch_assoc($result);
 
 ?>
 
@@ -28,18 +36,22 @@ if(!$_SESSION['id_user']){
                     </div>
                     <div class="card-body">
                         <!-- Form Input Task -->
-                        <form action="../action/actionTambahTugas.php" method="POST">
+                        <form action="../action/actionEditTugas.php" method="POST">
                             <div class="mb-3">
                                 <label for="namaTugas" class="form-label">Nama Tugas</label>
-                                <input type="text" class="form-control" id="namaTugas" name="namaTugas" placeholder="Silahkan isikan nama tugas"  required>
+                                <input type="text" class="form-control" id="namaTugas" name="namaTugas" value="<?php echo $row['namaTugas']; ?>" placeholder="Silahkan isikan nama tugas"  required>
                             </div>
                             <div class="mb-3">
                                 <label for="deskripsiTugas" class="form-label">Description</label>
-                                <textarea class="form-control" id="deskripsiTugas" name="deskripsiTugas" rows="3" placeholder="Silahkan isikan deskripsi tugas"></textarea>
+                                <textarea class="form-control" id="deskripsiTugas" name="deskripsiTugas" rows="3"  placeholder="Silahkan isikan deskripsi tugas"><?php echo $row['deskripsiTugas']; ?></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="tenggatWaktu" class="form-label">Tenggat Waktu</label>
-                                <input type="date" class="form-control" id="tenggatWaktu" name="tenggatWaktu">
+                                <input type="date" class="form-control" id="tenggatWaktu" name="tenggatWaktu" value="<?php echo $row['tenggatWaktu']; ?>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="idTugas" class="form-label">ID Tugas</label>
+                                <input type="number" class="form-control" id="idTugas" name="idTugas" value="<?php echo $idTugas ?>" readonly>
                             </div>
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary btn-lg">Edit Tugas</button>
